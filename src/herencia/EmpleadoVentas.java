@@ -46,7 +46,7 @@ public class EmpleadoVentas extends Empleado {
     
     public String mostrarInformacion()
     {
-    return super.mostrarInformacion() + "Total de ventas anuales: Lps."+ventasAnuales;
+    return super.mostrarInformacion() + "\nTotal de ventas anuales: Lps."+ventasAnuales;
     }
     
 
