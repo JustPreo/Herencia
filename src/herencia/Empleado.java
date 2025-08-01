@@ -21,8 +21,8 @@ public class Empleado {
     public Empleado(int codigo, String nombre, double salarioBase) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.fechaContratacion = Calendar.getInstance();
         this.salarioBase = salarioBase;
+        this.fechaContratacion = Calendar.getInstance();
         this.horasTrabajadas = 0;
 
     }
