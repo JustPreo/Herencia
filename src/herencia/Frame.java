@@ -27,11 +27,11 @@ import javax.swing.JPanel;
  * @author saidn
  */
 public class Frame extends JFrame{
-    private static final Color NEGRO_SUAVE     = new Color(30, 30, 30);     
-private static final Color DORADO_METALICO = new Color(212, 175, 55);   
-private static final Color MADERA_CAFE     = new Color(92, 64, 51);     
-private static final Color GRIS_PIZARRA    = new Color(60, 63, 65);     
-private static final Color CREMA_SUAVE     = new Color(240, 234, 220);  
+    public static final Color NEGRO_SUAVE     = new Color(30, 30, 30);     
+public static final Color DORADO_METALICO = new Color(212, 175, 55);   
+public static final Color MADERA_CAFE     = new Color(92, 64, 51);     
+public static final Color GRIS_PIZARRA    = new Color(60, 63, 65);     
+public static final Color CREMA_SUAVE     = new Color(240, 234, 220);  
 
 
     public Frame(){
@@ -76,7 +76,7 @@ private static final Color CREMA_SUAVE     = new Color(240, 234, 220);
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.insets = new Insets(100, 0, 20, 0);
+        gbc.insets = new Insets(50, 0, 20, 0);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         getContentPane().add(titleLabel, gbc);
     }

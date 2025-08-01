@@ -23,9 +23,25 @@ public class Main extends Frame {
         JButton btn[] = new JButton[]{btnBuscarEmp, btnRegistrar,btnReportes, btnCerrar};
         FrameConFondo(this, cargarFondo(imagen));
         disBoton(btn);
+        botones();
 
     }
-
+private void botones(){
+    
+     btnReportes.addActionListener(e -> {
+            SwingUtilities.invokeLater(() -> new Login().setVisible(true));
+            dispose();
+        });
+      btnBuscarEmp.addActionListener(e -> {
+            SwingUtilities.invokeLater(() -> new Login().setVisible(true));
+            dispose();
+        });
+       btnRegistrar.addActionListener(e -> {
+            SwingUtilities.invokeLater(() -> new RegistrarF().setVisible(true));
+            dispose();
+        });
+btnCerrar.addActionListener(e -> System.exit(0));
+}
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new Main().setVisible(true));
     }
