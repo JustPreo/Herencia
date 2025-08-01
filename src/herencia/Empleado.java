@@ -47,7 +47,7 @@ public class Empleado {
         //Devuelve una cadena que incluye el código, el nombre y la fecha de contratación del empleado.
         return "Codigo:"+codigo
                 +"\nNombre completo:"+nombre+""
-                + "Fecha contratacion:" + fechaContratacion.get(Calendar.MONTH)
+                + "Fecha contratacion:" + fechaContratacion.get((Calendar.MONTH)+1)
                 + "/" + fechaContratacion.get(Calendar.DAY_OF_MONTH)
                 + "/" + fechaContratacion.get(Calendar.YEAR);
     }

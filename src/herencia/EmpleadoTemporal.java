@@ -55,7 +55,7 @@ public class EmpleadoTemporal extends Empleado {
 
     public String mostrarInformacion() {
         return super.mostrarInformacion()
-                + "\nFecha fin contrato:" + fechaFinContrato.get(Calendar.MONTH)
+                + "\nFecha fin contrato:" + fechaFinContrato.get((Calendar.MONTH)+1)
                 + "/" + fechaFinContrato.get(Calendar.DAY_OF_MONTH)
                 + "/" + fechaFinContrato.get(Calendar.YEAR);
     }

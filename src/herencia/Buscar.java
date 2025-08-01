@@ -22,15 +22,30 @@ public class Buscar extends Frame
     public Buscar()
     {
     FrameConFondo(this, cargarFondo(imagen));
+    setLayout(null);
     
     //Crear botones
     buscar = new JButton("Buscar");
-    buscar.setBounds(10,10,50,50);
+    buscar.setBounds(10,10,100,30);
     getContentPane().add(buscar);
     
-    calcularPagos = new JButton("Calcular pagos");
-    calcularPagos.setBounds(10,60,50,50);
+    calcularPagos = new JButton("Calcular Pagos");
+    calcularPagos.setBounds(10,60,150,30);
     getContentPane().add(calcularPagos);
+    
+    modificarInformacion = new JButton("Modificar Informacion");
+    modificarInformacion.setBounds(10,110,170,30);
+    getContentPane().add(modificarInformacion);
+    
+    //JLabel
+    codigoT = new JLabel("Codigo:");
+    codigoT.setBounds(50,60,150,30);
+    getContentPane().add(codigoT);
+    
+    
+    
+    
+    
     
     
     
