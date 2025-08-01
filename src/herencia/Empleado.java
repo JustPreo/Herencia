@@ -39,7 +39,8 @@ public class Empleado {
     public double calculoPago()//WIP
     {
         double pagoPorHora = (salarioBase / 160);
-        return pagoPorHora * horasTrabajadas;
+        double pagoNeto = pagoPorHora * horasTrabajadas;
+        return pagoNeto- (pagoNeto*0.035);
     }
 
     public String mostrarInformacion() {

@@ -9,19 +9,45 @@ package herencia;
  * @author user
  */
 public class EmpleadoVentas extends Empleado {
-   double ventasMensuales;//Ventas
-   double tasaComision;//Tiene que pedirse de un porcentaje osea 5%?
-   
-   public EmpleadoVentas(int codigo,String nombre,double salarioBase,double tasaComision)
-   {
-   super(codigo, nombre, salarioBase);
-   ventasMensuales = 0;
-   this.tasaComision = tasaComision;
-   }
-   
-   public boolean registroVentas(double monto)
-   {
-   
-   }
+
+    double ventasMensuales;//Ventas
+    double tasaComision;//Tiene que pedirse de un porcentaje osea 5%?
+    double ventasAnuales;
+
+    public EmpleadoVentas(int codigo, String nombre, double salarioBase, double tasaComision) {
+        super(codigo, nombre, salarioBase);
+        ventasMensuales = 0;
+        this.tasaComision = tasaComision * 0.01;//5 * 0.01 = 0.05 osea 5%
+    }
+
+    public boolean registroVentas(double monto) {
+        if (monto >= 0) {
+            ventasMensuales += monto;
+            ventasAnuales +=monto;
+            return true;
+        }
+        return false;//Monto negativo
+    }
     
+    public double calculoComision()
+    {
+        return ventasMensuales * tasaComision;
+    }
+    
+    public double calculoPago()
+    {
+    return super.calculoPago() + calculoComision();
+    }
+    
+    public double ventasAnuales()
+    {
+    return ventasAnuales;
+    }
+    
+    public String mostrarInformacion()
+    {
+    return super.mostrarInformacion() + "Total de ventas anuales: Lps."+ventasAnuales;
+    }
+    
+
 }
