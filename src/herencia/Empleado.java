@@ -51,5 +51,14 @@ public class Empleado {
                 + "/" + fechaContratacion.get(Calendar.DAY_OF_MONTH)
                 + "/" + fechaContratacion.get(Calendar.YEAR);
     }
+    
+    
+    
+    public int getCodigo()
+    {
+    return codigo;
+    
+    }
+    
 
 }

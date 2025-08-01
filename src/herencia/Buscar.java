@@ -37,10 +37,12 @@ public class Buscar extends Frame
     modificarInformacion.setBounds(10,110,170,30);
     getContentPane().add(modificarInformacion);
     
-    //JLabel
+    //JLabel - Modificar nombre , salario base | Si es empleado temp tambien poder cambiar la fechaFinContrato | Si es Ventas tambien poder cambiar tasaComision
     codigoT = new JLabel("Codigo:");
     codigoT.setBounds(50,60,150,30);
     getContentPane().add(codigoT);
+    
+    
     
     
 
