@@ -14,6 +14,7 @@ public class EmpleadoVentas extends Empleado {
     double tasaComision;//Tiene que pedirse de un porcentaje osea 5%?
     double ventasAnuales;
 //a
+
     public EmpleadoVentas(int codigo, String nombre, double salarioBase, double tasaComision) {
         super(codigo, nombre, salarioBase);
         ventasMensuales = 0;
@@ -23,31 +24,28 @@ public class EmpleadoVentas extends Empleado {
     public boolean registroVentas(double monto) {
         if (monto >= 0) {
             ventasMensuales += monto;
-            ventasAnuales +=monto;
+            ventasAnuales += monto;
             return true;
         }
         return false;//Monto negativo
     }
-    
-    public double calculoComision()
-    {
+
+    public double calculoComision() {
         return ventasMensuales * tasaComision;
     }
-    
-    public double calculoPago()
-    {
-    return super.calculoPago() + calculoComision();
+
+    public double calculoPago() {
+        double pagoPorHora = (salarioBase / 160);
+        double pagoNeto = pagoPorHora * horasTrabajadas;
+        return pagoNeto + calculoComision();
     }
-    
-    public double ventasAnuales()
-    {
-    return ventasAnuales;
+
+    public double ventasAnuales() {
+        return ventasAnuales;
     }
-    
-    public String mostrarInformacion()
-    {
-    return super.mostrarInformacion() + "Total de ventas anuales: Lps."+ventasAnuales;
+
+    public String mostrarInformacion() {
+        return super.mostrarInformacion() + "\nTotal de ventas anuales: Lps." + ventasAnuales;
     }
-    
 
 }
