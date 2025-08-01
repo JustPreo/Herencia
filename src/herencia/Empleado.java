@@ -57,8 +57,21 @@ public class Empleado {
     public int getCodigo()
     {
     return codigo;
-    
     }
     
+    public String getNombre()
+    {
+    return nombre;
+    }
+    
+    public double getSalario()
+    {
+    return salarioBase;
+    }
+    
+    public double getHorasTrabajadas()
+    {
+    return horasTrabajadas;
+    }
 
 }
