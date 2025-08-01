@@ -43,11 +43,7 @@ public class Buscar extends Frame
     getContentPane().add(codigoT);
     
     
-    
-    
-    
-    
-    
+
     
     }
     
