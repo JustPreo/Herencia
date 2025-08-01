@@ -10,7 +10,7 @@ import java.util.Calendar;
 import javax.swing.*;
 
 public class RegistrarF extends Frame {
-
+Main main = new Main();
     String imagen = "segimg.png";
     private JLabel titleLabel = new JLabel("Registrar Empleado", SwingConstants.CENTER);
     private JLabel codigoT, nombreT, salarioT, tipoEmpleadoT, extra1T;
@@ -19,7 +19,7 @@ public class RegistrarF extends Frame {
     private JComboBox<String> tipoEmpleado;
     private JDateChooser fechaFinChooser;
     private JLabel fechaFinT = new JLabel("Fecha fin contrato:");
-    private ArrayList<Empleado> empleados = new ArrayList<>();
+    public static  ArrayList<Empleado> empleados = new ArrayList<>();
 
     public RegistrarF() {
         FrameConFondo(this, cargarFondo(imagen));
@@ -116,7 +116,7 @@ public class RegistrarF extends Frame {
         getContentPane().add(crear, gbc);
 
         gbc.gridy++;
-        cerrar = new JButton("Cerrar");
+        cerrar = new JButton("Regresar");
         cerrar.setFont(new Font("Arial", Font.BOLD, 16));
         cerrar.setBackground(NEGRO_SUAVE);
         cerrar.setForeground(Color.WHITE);
@@ -149,7 +149,9 @@ public class RegistrarF extends Frame {
 
         cerrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                
                 dispose();
+                main.setVisible(true);
             }
         });
 

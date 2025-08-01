@@ -29,11 +29,11 @@ public class Main extends Frame {
 private void botones(){
     
      btnReportes.addActionListener(e -> {
-            SwingUtilities.invokeLater(() -> new Login().setVisible(true));
+            SwingUtilities.invokeLater(() -> new Reportes().setVisible(true));
             dispose();
         });
       btnBuscarEmp.addActionListener(e -> {
-            SwingUtilities.invokeLater(() -> new Login().setVisible(true));
+            SwingUtilities.invokeLater(() -> new Buscar().setVisible(true));
             dispose();
         });
        btnRegistrar.addActionListener(e -> {
