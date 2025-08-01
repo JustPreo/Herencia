@@ -167,7 +167,11 @@ public class RegistrarF extends Frame {
                 JOptionPane.showMessageDialog(this, "Código y salario deben ser valores positivos.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
+            
+            if(!verificarCod(cod)){
+        JOptionPane.showMessageDialog(this, "Este codigo ya pertenece a una cuenta.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+        }
             Empleado emp = null;
 
             switch (tipo) {
@@ -216,6 +220,14 @@ public class RegistrarF extends Frame {
         }
     }
 
+    private boolean verificarCod(int cod) {
+    for (Empleado emp : empleados) {
+        if (emp.getCodigo() == cod) {
+            return false;
+        }
+    }
+    return true;
+}
     private void limpiarCampos() {
         codigo.setText("");
         nombre.setText("");
