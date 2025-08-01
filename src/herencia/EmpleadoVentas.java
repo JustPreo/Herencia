@@ -36,7 +36,9 @@ public class EmpleadoVentas extends Empleado {
     
     public double calculoPago()
     {
-    return super.calculoPago() + calculoComision();
+        double pagoPorHora = (salarioBase / 160);
+            double pagoNeto = pagoPorHora * horasTrabajadas;
+    return pagoNeto + calculoComision();
     }
     
     public double ventasAnuales()

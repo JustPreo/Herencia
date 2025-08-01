@@ -30,7 +30,9 @@ public class EmpleadoTemporal extends Empleado {
          */
         Calendar hoy = Calendar.getInstance();
         if (hoy.before(fechaFinContrato)) {
-            return super.calculoPago();
+            double pagoPorHora = (salarioBase / 160);
+            double pagoNeto = pagoPorHora * horasTrabajadas;
+            return pagoNeto;
         } else //if (hoy.after(fechaFinContrato))
         {
             //Por si es posterior a la fecha
@@ -57,7 +59,5 @@ public class EmpleadoTemporal extends Empleado {
                 + "/" + fechaFinContrato.get(Calendar.DAY_OF_MONTH)
                 + "/" + fechaFinContrato.get(Calendar.YEAR);
     }
-    
-    
 
 }
