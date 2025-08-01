@@ -59,5 +59,10 @@ public class EmpleadoTemporal extends Empleado {
                 + "/" + fechaFinContrato.get(Calendar.DAY_OF_MONTH)
                 + "/" + fechaFinContrato.get(Calendar.YEAR);
     }
+    
+    public Calendar getFechaFinContrato()
+    {
+    return fechaFinContrato;
+    }
 
 }

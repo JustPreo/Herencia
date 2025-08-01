@@ -47,5 +47,10 @@ public class EmpleadoVentas extends Empleado {
     public String mostrarInformacion() {
         return super.mostrarInformacion() + "\nTotal de ventas anuales: Lps." + ventasAnuales;
     }
+    
+    public double getTasaComision()
+    {
+    return tasaComision;
+    }
 
 }
