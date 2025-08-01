@@ -13,7 +13,7 @@ public class EmpleadoVentas extends Empleado {
     double ventasMensuales;//Ventas
     double tasaComision;//Tiene que pedirse de un porcentaje osea 5%?
     double ventasAnuales;
-
+//a
     public EmpleadoVentas(int codigo, String nombre, double salarioBase, double tasaComision) {
         super(codigo, nombre, salarioBase);
         ventasMensuales = 0;
