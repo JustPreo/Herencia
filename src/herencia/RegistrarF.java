@@ -1,5 +1,7 @@
 package herencia;
 
+import com.toedter.calendar.JDateChooser;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,11 +13,12 @@ public class RegistrarF extends Frame {
 
     String imagen = "segimg.png";
     private JLabel titleLabel = new JLabel("Registrar Empleado", SwingConstants.CENTER);
-    private JLabel codigoT, nombreT, salarioT, tipoEmpleadoT, extra1T, fechaFinT;
-    private JTextField codigo, nombre, salario, extra1, fechaFin;
+    private JLabel codigoT, nombreT, salarioT, tipoEmpleadoT, extra1T;
+    private JTextField codigo, nombre, salario, extra1;
     private JButton crear, cerrar;
     private JComboBox<String> tipoEmpleado;
-
+    private JDateChooser fechaFinChooser;
+    private JLabel fechaFinT = new JLabel("Fecha fin contrato:");
     private ArrayList<Empleado> empleados = new ArrayList<>();
 
     public RegistrarF() {
@@ -91,14 +94,16 @@ public class RegistrarF extends Frame {
 
         gbc.gridy++;
         gbc.gridx = 0;
-        fechaFinT = new JLabel("Fecha fin contrato (yyyy-mm-dd):");
+        
         fechaFinT.setForeground(CREMA_SUAVE);
         fechaFinT.setVisible(false);
         getContentPane().add(fechaFinT, gbc);
         gbc.gridx = 1;
-        fechaFin = new JTextField(15);
-        fechaFin.setVisible(false);
-        getContentPane().add(fechaFin, gbc);
+        fechaFinChooser = new JDateChooser();
+        fechaFinChooser.setDateFormatString("yyyy-MM-dd");
+        fechaFinChooser.setMinSelectableDate(new java.util.Date());
+        fechaFinChooser.setVisible(false);
+        getContentPane().add(fechaFinChooser, gbc);
 
         gbc.gridy++;
         gbc.gridx = 0;
@@ -123,15 +128,14 @@ public class RegistrarF extends Frame {
                 String seleccionado = tipoEmpleado.getSelectedItem().toString();
                 extra1.setVisible(false);
                 extra1T.setVisible(false);
-                fechaFin.setVisible(false);
-                fechaFinT.setVisible(false);
+                fechaFinChooser.setVisible(false);
 
                 if (seleccionado.equals("Empleado Ventas")) {
                     extra1.setVisible(true);
                     extra1T.setVisible(true);
                 } else if (seleccionado.equals("Empleado Temporal")) {
-                    fechaFin.setVisible(true);
                     fechaFinT.setVisible(true);
+                    fechaFinChooser.setVisible(true);
                 }
                 repaint();
             }
@@ -159,29 +163,51 @@ public class RegistrarF extends Frame {
             double salBase = Double.parseDouble(salario.getText());
             String tipo = tipoEmpleado.getSelectedItem().toString();
 
+            if (cod < 0 || salBase <= 0) {
+                JOptionPane.showMessageDialog(this, "Código y salario deben ser valores positivos.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             Empleado emp = null;
 
             switch (tipo) {
                 case "Empleado Estándar":
                     emp = new Empleado(cod, nom, salBase);
                     break;
+
                 case "Empleado Temporal":
-                    String[] partes = fechaFin.getText().split("-");
-                    Calendar fecha = Calendar.getInstance();
-                    fecha.set(Integer.parseInt(partes[0]), Integer.parseInt(partes[1]) - 1, Integer.parseInt(partes[2]));
-                    emp = new EmpleadoTemporal(cod, nom, salBase, fecha);
+                    Calendar selectedDate = fechaFinChooser.getCalendar();
+                    if (selectedDate == null) {
+                        JOptionPane.showMessageDialog(this, "Seleccione una fecha de fin de contrato válida.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    Calendar fecha = selectedDate;
+                    Calendar hoy = Calendar.getInstance();
+                    if (fecha.after(hoy)) {
+                        emp = new EmpleadoTemporal(cod, nom, salBase, fecha);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Seleccione una fecha válida posterior a hoy.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     break;
+
+
                 case "Empleado Ventas":
                     double tasa = Double.parseDouble(extra1.getText());
-                    emp = new EmpleadoVentas(cod, nom, salBase, tasa);
+                    if (tasa > 0) {
+                        emp = new EmpleadoVentas(cod, nom, salBase, tasa);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ingrese una tasa de comisión válida (mayor que 0).", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
                     break;
+
                 default:
                     JOptionPane.showMessageDialog(this, "Seleccione un tipo de empleado válido.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
             }
 
             empleados.add(emp);
-
             JOptionPane.showMessageDialog(this, "Empleado creado:\n" + emp.mostrarInformacion(), "Éxito", JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
 
@@ -195,11 +221,11 @@ public class RegistrarF extends Frame {
         nombre.setText("");
         salario.setText("");
         extra1.setText("");
-        fechaFin.setText("");
+        fechaFinChooser.setDate(null);
         tipoEmpleado.setSelectedIndex(0);
         extra1.setVisible(false);
         extra1T.setVisible(false);
-        fechaFin.setVisible(false);
+        fechaFinChooser.setVisible(false);
         fechaFinT.setVisible(false);
     }
 
@@ -207,3 +233,4 @@ public class RegistrarF extends Frame {
         new RegistrarF();
     }
 }
+
